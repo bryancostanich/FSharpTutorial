@@ -53,6 +53,7 @@
     <None Include="UnitsOfMeasure.fsx" />
     <None Include="Tutorial.fs" />
     <None Include="Tuples.fsx" />
+    <None Include="SequenceSugars.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

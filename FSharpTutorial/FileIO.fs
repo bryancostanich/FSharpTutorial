@@ -26,6 +26,10 @@ type Exec (args) =
   member x.Run () =
     printfn "test."
 
+    // enumerate the embedded resources
     let foo = enumerateResources
+
+
+
 
     1
