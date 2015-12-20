@@ -39,7 +39,6 @@ let openResourceStream path =
 let resourceToString path =
   use stream = openResourceStream (path)
   use reader = new System.IO.StreamReader (stream)
-  // why the parens?
   let resourceString = reader.ReadToEnd()
   resourceString
   
@@ -56,5 +55,6 @@ type Exec (args) =
     // why the parens?
     let testData = processLines ( List.ofArray( csvText.Split '\n') )
     printfn "%d" testData.Length
+
 
     1 // exit
