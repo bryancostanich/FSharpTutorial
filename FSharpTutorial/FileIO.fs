@@ -1,7 +1,7 @@
 ﻿module fileIO
 
 open System
-//open Microsoft.FSharp.Reflection
+open Microsoft.FSharp.Reflection
 open System.Reflection
 
 type Poop(poopSmell) = 
@@ -18,7 +18,7 @@ let convertDataRow (csvLine:string) =
 
 
 let enumerateResources =
-  let currentAssembly:Assembly = typeof<Poop>.GetTypeInfo().Assembly
+  let currentAssembly:Assembly = typeof<Poop>.Assembly
   let resourceNames = List.ofArray(currentAssembly.GetManifestResourceNames())
   resourceNames
     |> List.iter (fun r -> printfn "%A" r)
@@ -28,7 +28,7 @@ let enumerateResources =
 
 type Exec (args) = 
   member x.Run () =
-    printf "test."
+    printfn "test."
 
     enumerateResources
 
