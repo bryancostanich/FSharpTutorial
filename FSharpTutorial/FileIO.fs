@@ -3,6 +3,7 @@
 open System
 open Microsoft.FSharp.Reflection
 open System.Reflection
+open System.Text
 
 let convertDataRow (csvLine:string) = 
   let cells = List.ofSeq(csvLine.Split(',')) // split the csv and convert the sequence to a list
@@ -38,7 +39,8 @@ let openResourceStream path =
 let resourceToString path =
   use stream = openResourceStream (path)
   use reader = new System.IO.StreamReader (stream)
-  let resourceString = reader.ReadToEnd
+  // why the parens?
+  let resourceString = reader.ReadToEnd()
   resourceString
   
 
@@ -51,6 +53,8 @@ type Exec (args) =
 
     let csvText = resourceToString "ContinentalPopulations.csv"
 
-    let testData = processLines (csvText.Split('\n'))
+    // why the parens?
+    let testData = processLines ( List.ofArray( csvText.Split '\n') )
+    printfn "%d" testData.Length
 
-    1
+    1 // exit
