@@ -35,9 +35,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tuples.fsx" />
-    <Compile Include="Main.fs" />
+    <Compile Include="AssemblyInfo.fs" />
     <Compile Include="FileIO.fs" />
+    <Compile Include="Main.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />
   <ItemGroup>
@@ -52,6 +52,7 @@
     <None Include="AlternateToDiscriminatedUnions.fsx" />
     <None Include="UnitsOfMeasure.fsx" />
     <None Include="Tutorial.fs" />
+    <None Include="Tuples.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
