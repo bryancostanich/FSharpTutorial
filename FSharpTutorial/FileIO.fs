@@ -4,9 +4,6 @@ open System
 open Microsoft.FSharp.Reflection
 open System.Reflection
 
-type Poop(poopSmell) = 
-    member this.smell = poopSmell
-
 let convertDataRow (csvLine:string) = 
   let cells = List.ofSeq(csvLine.Split(',')) // split the csv and convert the sequence to a list
   match cells with
@@ -18,7 +15,7 @@ let convertDataRow (csvLine:string) =
 
 
 let enumerateResources =
-  let currentAssembly = typeof<Poop>.Assembly
+  let currentAssembly = Assembly.GetCallingAssembly()
   let resourceNames = List.ofArray(currentAssembly.GetManifestResourceNames())
   resourceNames
     |> List.iter (fun r -> printfn "%A" r)
@@ -29,6 +26,6 @@ type Exec (args) =
   member x.Run () =
     printfn "test."
 
-    enumerateResources
+    let foo = enumerateResources
 
     1
