@@ -18,12 +18,11 @@ let convertDataRow (csvLine:string) =
 
 
 let enumerateResources =
-  let currentAssembly:Assembly = typeof<Poop>.Assembly
+  let currentAssembly = typeof<Poop>.Assembly
   let resourceNames = List.ofArray(currentAssembly.GetManifestResourceNames())
   resourceNames
     |> List.iter (fun r -> printfn "%A" r)
-  
-
+  resourceNames
 
 
 type Exec (args) = 
