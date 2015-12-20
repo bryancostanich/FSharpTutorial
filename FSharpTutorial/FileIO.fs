@@ -13,6 +13,14 @@ let convertDataRow (csvLine:string) =
   | _ -> failwith "Incorrect data format."
   ;;
 
+let rec processLines (lines) =
+  match lines with 
+  | [] -> []
+  | currentLine::remaining ->
+    let parsedLine = convertDataRow (currentLine)
+    let parsedRest = processLines (remaining)
+    parsedLine :: parsedRest
+
 
 let enumerateResources =
   let currentAssembly = Assembly.GetCallingAssembly()
@@ -22,6 +30,18 @@ let enumerateResources =
   resourceNames
 
 
+let openResourceStream path =
+  let currentAssembly = System.Reflection.Assembly.GetCallingAssembly()
+  let stream = currentAssembly.GetManifestResourceStream (path)
+  stream
+
+let resourceToString path =
+  use stream = openResourceStream (path)
+  use reader = new System.IO.StreamReader (stream)
+  let resourceString = reader.ReadToEnd
+  resourceString
+  
+
 type Exec (args) = 
   member x.Run () =
     printfn "test."
@@ -29,7 +49,8 @@ type Exec (args) =
     // enumerate the embedded resources
     let foo = enumerateResources
 
+    let csvText = resourceToString "ContinentalPopulations.csv"
 
-
+    let testData = processLines (csvText.Split('\n'))
 
     1
