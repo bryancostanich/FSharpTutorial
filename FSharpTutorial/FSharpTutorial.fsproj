@@ -56,6 +56,7 @@
     <None Include="Tuples.fsx" />
     <None Include="SequenceSugars.fsx" />
     <None Include="LanguageNotes.md" />
+    <None Include="ObjectInitializers.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

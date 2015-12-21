@@ -22,6 +22,12 @@ let rec processLines (lines) =
     let parsedRest = processLines (remaining)
     parsedLine :: parsedRest
 
+let rec calculatePopulationSum (rows) =
+  match rows with
+  | [] -> 0
+  | (_, value)::tail -> //this is cool, we're decomposing the tuple in the pattern match
+    let remainingSum = calculatePopulationSum(tail)
+    value + remainingSum
 
 let enumerateResources =
   let currentAssembly = Assembly.GetCallingAssembly()
@@ -33,12 +39,12 @@ let enumerateResources =
 
 let openResourceStream path =
   let currentAssembly = System.Reflection.Assembly.GetCallingAssembly()
-  let stream = currentAssembly.GetManifestResourceStream (path)
+  let stream = currentAssembly.GetManifestResourceStream(path)
   stream
 
 let resourceToString path =
   use stream = openResourceStream (path)
-  use reader = new System.IO.StreamReader (stream)
+  use reader = new System.IO.StreamReader(stream)
   let resourceString = reader.ReadToEnd()
   resourceString
   
@@ -53,8 +59,15 @@ type Exec (args) =
     let csvText = resourceToString "ContinentalPopulations.csv"
 
     // why the parens?
-    let testData = processLines ( List.ofArray( csvText.Split '\n') )
-    printfn "%d" testData.Length
+    let popData = processLines(List.ofArray(csvText.Split '\n'))
+    printfn "%d" popData.Length
+
+    let sum = float (calculatePopulationSum(popData))
+    printfn "Total World Population: %f" sum
+
+    for (title, value) in popData do // pattern matching!
+      let percentage = int((float(value)) / sum * 100.0)
+      Console.WriteLine("{0,-18} - {1,8} ({2}%)", title, value, percentage)
 
 
     1 // exit
