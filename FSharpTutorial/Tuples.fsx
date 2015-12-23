@@ -28,6 +28,16 @@ printCityAndPopulation prague;;
 printCityStuff seattle;;
 
 
+//====== returning tuples
+let divRem(a,b) = (a/b, a%b);;
+let (div,rem) = divRem (9,4) // returns div of 2, and remainder of 1 (note that i've matched out the return)
+
+//===== .net calls with out parameters are automatically converted to tuple returns! so cool!
+let (success, parsedInt) = System.Int32.TryParse ("52")
+let (_, parsedInt) = System.Int32.TryParse ("58") // can also just ignore the bool :D
+
+
+
 
 //=======
 
@@ -46,3 +56,19 @@ setPopulation portland 10;;
 
 let newYork = ("New York", 123)
 setPopulation newYork 10;
+
+//=======
+// Tuples can also be used in higher order functions
+// the following example shows how to to apply a function to part of a tuple:
+
+let mapFirst f (a,b) = (f(a),b)
+let mapSecond f (a,b) = (a,f(b))
+
+let foo = (5,6)
+(mapFirst (fun n -> n+1) foo)
+
+// can used the pipeline operator, as well
+foo |> mapFirst (fun n -> n+1)
+
+// also, instead of a function, we can pass an operator, so power!
+foo |> mapFirst ((*) 5)

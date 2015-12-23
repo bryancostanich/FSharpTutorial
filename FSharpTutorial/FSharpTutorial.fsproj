@@ -53,10 +53,14 @@
     <None Include="AlternateToDiscriminatedUnions.fsx" />
     <None Include="UnitsOfMeasure.fsx" />
     <None Include="Tutorial.fs" />
-    <None Include="Tuples.fsx" />
     <None Include="SequenceSugars.fsx" />
+    <None Include="Tuples.fsx" />
     <None Include="LanguageNotes.md" />
     <None Include="ObjectInitializers.fsx" />
+    <None Include="Lambda.fsx" />
+    <None Include="GenericFunctions.fsx" />
+    <None Include="Options_SomeOrNone.fsx" />
+    <None Include="FunctionComposition.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

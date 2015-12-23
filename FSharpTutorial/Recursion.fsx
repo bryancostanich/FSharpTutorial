@@ -8,7 +8,6 @@ factorial 235;;
 
 
 // recursion can also be hidden inside a function, making a nice package:
-
 let factorialAsString number =
   let rec factorial number =
     if number <= 1 then
