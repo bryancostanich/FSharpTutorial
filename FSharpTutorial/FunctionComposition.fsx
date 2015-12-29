@@ -19,3 +19,6 @@ places |> List.map (fun (_,pop) -> statusByPopulation(pop))
 // the composition operator shortcuts by taking the output
 // of the first function and passes it to the second, for us.
 places |> List.map (snd >> statusByPopulation)
+
+// for reference, this is the definition of >>:
+// let (>>) f g x = f(f(x))

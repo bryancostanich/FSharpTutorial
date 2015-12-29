@@ -61,6 +61,8 @@
     <None Include="GenericFunctions.fsx" />
     <None Include="Options_SomeOrNone.fsx" />
     <None Include="FunctionComposition.fsx" />
+    <None Include="LearnTODO.md" />
+    <None Include="Records.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

@@ -56,3 +56,31 @@ printf "%d" (aggregateList (*) 1 list2)
 // this is really cool! max is a built in operator that returns the bigger of the two passed in values
 // so in this case, we can actually find the biggest value in the list!
 printf "%d" (aggregateList max (-1) [6;28;2;35;76;4]) 
+
+
+
+//==== Folding
+
+// given the following list of tuples
+let places = [("Los Angeles", 15000000);
+              ("Eugene", 150000);
+              ("New York", 9000000);
+              ("Seattle", 5000000);
+              ("Brightwood", 500)]
+
+// add up the pulations
+places |> List.fold(fun sum (_, pop) -> sum + pop) 0;;
+
+// format them as a list
+places |> List.fold(fun s (n, _) -> s + n + ", ") "";
+
+// format as two columns (this is where the state thread comes in and we pass a bool
+// and negate it each operation. you could image that you could create three columns 
+// by passing a counter, adding spaces and resetting every time the counter hit 3
+places
+  |> List.fold (fun (b,str) (name,_) ->
+    let n = if b then name.PadRight(20) else name + "\n"
+    (not b, str+n)
+   ) (true, "")
+  |> snd
+  |> printfn "%s";;
