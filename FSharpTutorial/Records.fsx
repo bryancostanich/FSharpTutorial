@@ -29,3 +29,25 @@ let toRectangleF(original) =
 
 deflate (rect1, 30.0, 10.)
 
+//====
+
+
+type Range = { Location:int; Length:int }
+
+type Things =
+ | ThingOne of string * Range
+ | ThingTwo of string * Range
+
+
+let foo = ThingOne ("thingy one", {Location=0;Length=0})
+// can't short circuit: 
+// let foo = ThingOne ("thingy one.one", {0;0})
+
+
+[<Struct>]
+type RangeS(location:int,length:int) = 
+  member this.Location = location
+  member this.Length = length
+
+  override this.ToString() =
+    sprintf "Location: %d; Length: %d" this.Location this.Length

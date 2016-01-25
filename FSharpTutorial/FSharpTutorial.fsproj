@@ -42,11 +42,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />
   <ItemGroup>
-    <None Include="SamplePatternMatching.fsx" />
     <None Include="Recursion.fsx" />
     <None Include="Lists.fsx" />
     <None Include="ListMap.fsx" />
-    <None Include="ActivePatterns.fsx" />
     <None Include="SymbolicOperators.fsx" />
     <None Include="Pipelining.fsx" />
     <None Include="DiscriminatedUnions.fsx" />
@@ -63,6 +61,7 @@
     <None Include="FunctionComposition.fsx" />
     <None Include="LearnTODO.md" />
     <None Include="Records.fsx" />
+    <None Include="PatternMatching.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
